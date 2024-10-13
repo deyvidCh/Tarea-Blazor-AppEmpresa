@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AppEmpresaBlazor.Data;
 
 namespace AppEmpresaBlazor
 {
@@ -27,7 +26,6 @@ namespace AppEmpresaBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddHttpClient();
         }
 

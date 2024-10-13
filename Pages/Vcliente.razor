@@ -71,6 +71,17 @@ else
 
     private DateTime? var_fn;
     //Enviar Parametros a variables locales
+        private void LimpiarCampos()
+    {
+        var_idcliente = 0;
+        var_nit = string.Empty;
+        var_nombres = string.Empty;
+        var_apellidos = string.Empty;
+        var_direccion = string.Empty;
+        var_telefono = string.Empty;
+        var_fn = null;
+    }
+
     void enviarParametros(Int32 id,string? ni,string? nom,string? ape,string? dir,string? tel,DateTime? f ){
         var_idcliente = id;
         var_nit = ni;
@@ -86,6 +97,7 @@ else
         var client = ClientFactory.CreateClient();
         var addItem = new Cliente {Nit=var_nit,Nombres=var_nombres,Apellidos=var_apellidos,Direccion= var_direccion,Telefono=var_telefono,Fecha_nacimiento=var_fn};
         await client.PostAsJsonAsync(url, addItem);
+        LimpiarCampos();
         await OnInitializedAsync();
     }
     //Actualizar
@@ -94,6 +106,7 @@ else
         var client = ClientFactory.CreateClient();
         var addItem = new Cliente { Id_clientes=var_idcliente,Nit=var_nit,Nombres=var_nombres,Apellidos=var_apellidos,Direccion= var_direccion,Telefono=var_telefono,Fecha_nacimiento=var_fn};
         await client.PutAsJsonAsync($"{url}/{var_idcliente}", addItem);
+        LimpiarCampos();
         await OnInitializedAsync();
     }
 
@@ -101,6 +114,7 @@ else
     {
         var client = ClientFactory.CreateClient();
         await client.DeleteAsync($"{url}/{var_idcliente}");
+        LimpiarCampos();
         await OnInitializedAsync();
     }
     private IEnumerable<Cliente>? iclientes = [];
