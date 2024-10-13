@@ -40,7 +40,7 @@ else
     <table class="table">
         <tbody>
             <tr>
-                <th>ID</th>
+                <th></th>
                 <th>Nit</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
@@ -52,7 +52,7 @@ else
         @foreach (var cliente in iclientes)
         {   
             <tr>
-            <td>@cliente.Id_clientes</td>
+            <td><td><button type="button" @onclick="(() => enviarParametros(cliente.Id_clientes,cliente.Nit,cliente.Nombres,cliente.Apellidos,cliente.Direccion,cliente.Telefono,cliente.Fecha_nacimiento))" class="btn btn-info"><i class="oi oi-pencil"></i></button></td></td>
             <td>@cliente.Nit</td>
             <td>@cliente.Nombres</td>
             <td>@cliente.Apellidos</td>
